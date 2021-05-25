@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div class="cont">
     <img src="../assets/logo-small.svg" alt="">
 </div>
     
@@ -11,11 +11,11 @@
 </script>
 
 <style lang="scss" scoped>
-.container{
+.cont{
     display: flex;
     align-items: center;
     img{
-        width: 4%;
+        width: 3%;
         margin-left: 10px;
     }
     width: 100%;
