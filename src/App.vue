@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <Header :arrGen="arrGen" />
+    <Header :arrGen="arrGen"
+            @searchGenere='searchGenere' />
     <div class="main">
        <div class="cont-songs">
            <Song
-           v-for="(song,index) in songs" 
+            v-for="(song,index) in 'filterDisc'" 
             :key="index"
             :song="song"
            />
@@ -25,15 +26,32 @@ export default {
     Header,
     Song
 
+
+  },
+  computed:{
+
+    filterDisc(){
+      if(this.genereToSearch === ""){
+        return this.songs
+      }else{
+        return this.songs.filter(element => element.genre === this.genereToSearch)
+      }
+    }
   },
   data(){
     return{
       axios,
       songs:[],
-      arrGen:[]
+      arrGen:[],
+      genereToSearch: ''
+      
     }
   },
   methods:{
+    searchGenere(genereToSearch){
+      this.genereToSearch=genereToSearch
+      this.$emit('searchGenere',genereToSearch)
+    }
     
   },
   created(){
