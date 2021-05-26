@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :arrGen="arrGen" />
     <div class="main">
        <div class="cont-songs">
            <Song
-           v-for="(song,index) in songs.response" 
+           v-for="(song,index) in songs" 
             :key="index"
             :song="song"
            />
@@ -19,8 +19,6 @@ import axios from "axios";
 import Header from "./components/Header";
 import Song from "./components/Song";
 
-
-
 export default {
   name: 'App',
   components: {
@@ -31,13 +29,22 @@ export default {
   data(){
     return{
       axios,
-      songs:[]
+      songs:[],
+      arrGen:[]
     }
+  },
+  methods:{
+    
   },
   created(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res=>{
-      this.songs=res.data
+      this.songs=res.data.response
+      this.songs.forEach(disc => {
+           if(!this.arrGen.includes(disc.genre)){
+             this.arrGen.push(disc.genre)
+           }  
+      });
     })
     .catch(err=>{
       console.log(err);
