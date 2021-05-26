@@ -5,7 +5,7 @@
     <div class="main">
        <div class="cont-songs">
            <Song
-            v-for="(song,index) in 'filterDisc'" 
+            v-for="(song,index) in filterDisc" 
             :key="index"
             :song="song"
            />
@@ -83,7 +83,7 @@ export default {
 
 .main{
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding-top: 50px;
   padding-bottom: 50px;
   display: flex;
