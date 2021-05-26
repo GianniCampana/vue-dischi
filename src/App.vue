@@ -50,7 +50,7 @@ export default {
   methods:{
     searchGenere(genereToSearch){
       this.genereToSearch=genereToSearch
-      this.$emit('searchGenere',genereToSearch)
+      
     }
     
   },
